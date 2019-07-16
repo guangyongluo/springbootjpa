@@ -1,6 +1,7 @@
 package com.vilin.jpa.repository;
 
 import com.vilin.jpa.entity.Person;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
 import org.springframework.data.repository.query.Param;
@@ -36,4 +37,7 @@ public interface PersonRepository extends Repository<Person, Long> {
     @Query(value="select count(id) from jpa_person", nativeQuery = true)
     Long getPersonNumber();
 
+    @Modifying
+    @Query("update Person p set p.lastName =:lastName where p.id=:id")
+    void getPersonUpAndDel(@Param("lastName") String lastName, @Param("id") Long id);
 }
