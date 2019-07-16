@@ -31,4 +31,9 @@ public class PersonService {
     public Page<Person> getPaging(){
         return personRepository.findAll(PageRequest.of(0, 5, Sort.by(Sort.Direction.DESC, "id")));
     }
+
+    @Transactional
+    public void JpaRepository(Person person){
+        personRepository.saveAndFlush(person);
+    }
 }

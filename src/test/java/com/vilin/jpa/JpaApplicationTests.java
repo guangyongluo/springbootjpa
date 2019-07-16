@@ -50,4 +50,13 @@ public class JpaApplicationTests {
         System.out.println("当前的页数的记录数：" + page.getNumberOfElements());
     }
 
+    @Test
+    public void saveAndFlush(){
+        Person person = new Person();
+        person.setId(10l);
+        person.setFirstName("hello");
+        person.setLastName("world");
+        person.setEmailAddress("hello.world@outlook.com");
+         personService.JpaRepository(person);
+    }
 }
