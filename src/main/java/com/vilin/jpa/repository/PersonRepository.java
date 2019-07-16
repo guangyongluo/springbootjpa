@@ -3,12 +3,12 @@ package com.vilin.jpa.repository;
 import com.vilin.jpa.entity.Person;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface PersonRepository extends Repository<Person, Long> {
+public interface PersonRepository extends CrudRepository<Person, Long> {
 
     Person getByFirstName(String firstName);
 
@@ -40,4 +40,6 @@ public interface PersonRepository extends Repository<Person, Long> {
     @Modifying
     @Query("update Person p set p.lastName =:lastName where p.id=:id")
     void getPersonUpAndDel(@Param("lastName") String lastName, @Param("id") Long id);
+
+
 }
