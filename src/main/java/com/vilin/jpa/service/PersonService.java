@@ -3,6 +3,9 @@ package com.vilin.jpa.service;
 import com.vilin.jpa.entity.Person;
 import com.vilin.jpa.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,5 +25,10 @@ public class PersonService {
     @Transactional
     public void addPersons(List<Person> list){
         personRepository.saveAll(list);
+    }
+
+    @Transactional
+    public Page<Person> getPaging(){
+        return personRepository.findAll(PageRequest.of(0, 5, Sort.by(Sort.Direction.DESC, "id")));
     }
 }

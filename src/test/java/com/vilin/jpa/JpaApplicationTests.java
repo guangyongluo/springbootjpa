@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -37,6 +38,16 @@ public class JpaApplicationTests {
             list.add(person);
         }
         personService.addPersons(list);
+    }
+
+    @Test
+    public void getPage(){
+        Page<Person> page = personService.getPaging();
+        System.out.println("总条数：" + page.getTotalElements());
+        System.out.println("当前的页面：" + page.getNumber());
+        System.out.println("总页数：" + page.getTotalPages());
+        System.out.println("当前页的集合数据：" + page.getContent());
+        System.out.println("当前的页数的记录数：" + page.getNumberOfElements());
     }
 
 }

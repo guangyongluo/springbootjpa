@@ -3,12 +3,12 @@ package com.vilin.jpa.repository;
 import com.vilin.jpa.entity.Person;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface PersonRepository extends CrudRepository<Person, Long> {
+public interface PersonRepository extends PagingAndSortingRepository<Person, Long> {
 
     Person getByFirstName(String firstName);
 
