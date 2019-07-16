@@ -11,6 +11,9 @@ public class Person {
     private String firstName;
     private String lastName;
     private String emailAddress;
+    @ManyToOne
+    @JoinColumn(name = "address_id")
+    private  Address address;
 
     public Long getId() {
         return id;
@@ -42,5 +45,13 @@ public class Person {
 
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

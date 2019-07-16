@@ -45,4 +45,35 @@ public class PersonController {
     public List<Person> getPersonsByFirstNameOrderById(String firstName1, String firstName2){
         return personRepository.getByFirstNameOrFirstNameAndEmailAddressIsNotNull(firstName1, firstName2);
     }
+
+    @RequestMapping(path = "/getbyfaddressid")
+    @ResponseBody
+    public List<Person> getPersonsByAddressId(Long id){
+        return personRepository.getByAddressIdGreaterThan(id);
+    }
+
+    @RequestMapping(path = "/getminpersonid")
+    @ResponseBody
+    public Person getPersonsByAddressId(){
+
+        return personRepository.getMiniPersonId();
+    }
+
+    @RequestMapping(path = "/getperson")
+    @ResponseBody
+    public List<Person> getPersons(String firstName, Long id){
+        return personRepository.getPerson(firstName, id);
+    }
+
+    @RequestMapping(path = "/getpersonlike")
+    @ResponseBody
+    public List<Person> getPersonLike(String firstName){
+        return personRepository.getPersonLike(firstName);
+    }
+
+    @RequestMapping(path = "/getpersonnum")
+    @ResponseBody
+    public Long getPersonNumber(){
+        return personRepository.getPersonNumber();
+    }
 }
