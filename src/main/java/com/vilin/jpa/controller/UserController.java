@@ -64,7 +64,7 @@ public class UserController {
         return userPagingAndSortingRepository.findAll(Sort.by(order));
     }
 
-    @GetMapping("/page2")
+    @GetMapping("/getByPage")
     @ResponseBody
     public List<User> getUsersByPage(String email){
         Pageable pageable = PageRequest.of(0, 2);
