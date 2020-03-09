@@ -80,4 +80,28 @@ public class UserController {
         Slice<User> slice = userPagingAndSortingRepository.findByEmailContaining(email, pageable);
         return slice.getContent();
     }
+
+    @RequestMapping("/procedure1")
+    @ResponseBody
+    public Integer procedure1(Integer input){
+        return userRepository.explicitlyNamedPluslinout(input);
+    }
+
+    @RequestMapping("/procedure2")
+    @ResponseBody
+    public Integer procedure2(Integer input){
+        return userRepository.pluslinout(input);
+    }
+
+    @RequestMapping("/procedure3")
+    @ResponseBody
+    public Integer procedure3(Integer input){
+        return userRepository.entityAnnotatedCustomNamedProcedurePluslIO(input);
+    }
+
+    @RequestMapping("/NamedQuery")
+    @ResponseBody
+    public User NamedQuery(String name){
+        return userRepository.findByNameForNamedQuery(name);
+    }
 }

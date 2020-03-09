@@ -1,11 +1,17 @@
 package com.vilin.jpa.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@NamedStoredProcedureQuery(
+        name = "User.plus1",
+        procedureName = "pluslinout",
+        parameters = {
+                @StoredProcedureParameter(mode = ParameterMode.IN, name = "arg", type = Integer.class),
+                @StoredProcedureParameter(mode = ParameterMode.OUT, name = "res", type = Integer.class)
+        }
+)
+@NamedQuery(name = "User.findByNameForNamedQuery", query = "select u from User u where u.name = ?1")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
