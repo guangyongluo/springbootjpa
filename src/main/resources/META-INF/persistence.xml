@@ -22,7 +22,7 @@
         DISABLE_SELECTIVE:  标示注解@Cacheable(false) 以外的所有实体类
         UNSPECIFIED  默认值,jap默认被使用
          -->
-        <!--		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>-->
+        <shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="javax.persistence.jdbc.url"
@@ -38,15 +38,15 @@
             <property name="hibernate.show_sql" value="true"/>
             <!-- 数据表的生成策略 -->
             <property name="hibernate.hbm2ddl.auto" value="update"/>
-            <!-- 开起二级缓存 -->
+
             <!--配置二级缓存  -->
             <!-- 开启二级缓存 -->
-            <!--            <property name="hibernate.cache.use_second_level_cache" value="true"/>-->
+            <property name="hibernate.cache.use_second_level_cache" value="true"/>
             <!--    二级缓存相关的配置 -->
-            <!--            <property name="hibernate.cache.region.factory_class"-->
-            <!--                      value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>-->
+            <property name="hibernate.cache.region.factory_class"
+                      value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
             <!--   查询缓存开启 -->
-            <!--            <property name="hibernate.cache.use_query_cache" value="true"/>-->
+            <property name="hibernate.cache.use_query_cache" value="true"/>
 
         </properties>
 

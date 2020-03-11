@@ -84,20 +84,20 @@ public class Student {
 		this.mail = mail;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "Student [id=" + id + ", name=" + name + ", birth=" + birth + ", mail=" + mail + "]";
-//	}
-
-
 	@Override
 	public String toString() {
-		return "Student{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				", birth=" + birth +
-				", mail='" + mail + '\'' +
-				", order=" + order +
-				'}';
+		return "Student [id=" + id + ", name=" + name + ", birth=" + birth + ", mail=" + mail + "]";
 	}
+
+
+//	@Override
+//	public String toString() {
+//		return "Student{" +
+//				"id=" + id +
+//				", name='" + name + '\'' +
+//				", birth=" + birth +
+//				", mail='" + mail + '\'' +
+//				", order=" + order +
+//				'}';
+//	}
 }

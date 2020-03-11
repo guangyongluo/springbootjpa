@@ -2,6 +2,8 @@ package com.vilin.jpa.entity;
 
 import javax.persistence.*;
 
+@NamedQuery(name="Person.findPersonById", query = "SELECT p FROM Person p WHERE p.id = ?1")
+@Cacheable(true)
 @Entity
 @Table(name="jpa_person")
 public class Person {
@@ -11,6 +13,14 @@ public class Person {
     private String firstName;
     private String lastName;
     private String emailAddress;
+
+    public Person(){}
+
+    public Person(Long id, String firstName) {
+        this.id = id;
+        this.firstName = firstName;
+    }
+
     @ManyToOne
     @JoinColumn(name = "address_id")
     private  Address address;

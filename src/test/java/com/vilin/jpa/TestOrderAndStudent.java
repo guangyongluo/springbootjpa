@@ -39,14 +39,14 @@ public class TestOrderAndStudent {
     @Test
     public void getUpAndDel1() {
         //String  Jpql="update Order O SET O.name=? where O.id=?";
-        String jpql = "DELETE Order O WHERE O.id=?";
-        createEntityManager.createQuery(jpql).setParameter(1, 37).executeUpdate();
+        String jpql = "DELETE Order O WHERE O.id=?1";
+        createEntityManager.createQuery(jpql).setParameter(1, 17).executeUpdate();
     }
 
     @Test
     public void getUpAndDel() {
-        String Jpql = "update Order O SET O.name=? where O.id=?";
-        createEntityManager.createQuery(Jpql).setParameter(1, "孙悟空").setParameter(2, 36).executeUpdate();
+        String Jpql = "update Order O SET O.name=?1 where O.id=?2";
+        createEntityManager.createQuery(Jpql).setParameter(1, "孙悟空").setParameter(2, 17).executeUpdate();
     }
 
     @Test
@@ -61,8 +61,8 @@ public class TestOrderAndStudent {
 
     @Test
     public void getSubOrder() {
-        String jpql = "FROM Order O where O.student =(SELECT S FROM Student S WHERE S.id=?)";
-        List resultList = createEntityManager.createQuery(jpql).setParameter(1, 44).getResultList();
+        String jpql = "FROM Order O where O.student =(SELECT S FROM Student S WHERE S.id=?1)";
+        List resultList = createEntityManager.createQuery(jpql).setParameter(1, 16).getResultList();
         System.out.println("resultList>>" + resultList.size());
         System.out.println("resultList>>" + resultList);
 
@@ -70,23 +70,23 @@ public class TestOrderAndStudent {
 
     @Test
     public void getJpqlJoinFetch() {
-        String jpql = "FROM Order O Left OUTER Join FETCH  O.student WHERE O.id=?";
-        List resultList = createEntityManager.createQuery(jpql).setParameter(1, 46).getResultList();
+        String jpql = "FROM Order O Left OUTER Join FETCH  O.student WHERE O.id=?1";
+        List resultList = createEntityManager.createQuery(jpql).setParameter(1, 17).getResultList();
         System.out.println("resultList>" + resultList);
     }
 
 
     @Test
     public void getJpqlJoin() {
-        String jpql = "FROM Order O Left OUTER Join O.student WHERE O.id=?";
-        List resultList = createEntityManager.createQuery(jpql).setParameter(1, 46).getResultList();
+        String jpql = "FROM Order O Left OUTER Join O.student WHERE O.id=?1";
+        List resultList = createEntityManager.createQuery(jpql).setParameter(1, 17).getResultList();
         System.out.println("resultList>" + resultList);
     }
 
 
     @Test
     public void getgRoupByAndHaving() {
-        String jpql = "SELECT O.name ,O.id FROM Order O GROUP BY O.name HAVING O.id>?";
+        String jpql = "SELECT O.name ,O.id FROM Order O GROUP BY O.name HAVING O.id>?1";
         List resultList = createEntityManager.createQuery(jpql).setParameter(1, 1).getResultList();
         System.out.println("resultList>>" + resultList.size());
         System.out.println("resultList>>" + resultList);
@@ -94,9 +94,9 @@ public class TestOrderAndStudent {
 
     @Test
     public void getOrderBy() {
-        String jpql = "FROM Order O where O.id> ? Order By O.id DESC";
+        String jpql = "FROM Order O where O.id> ?1 Order By O.id DESC";
 
-        List resultList = createEntityManager.createQuery(jpql).setParameter(1, 41).getResultList();
+        List resultList = createEntityManager.createQuery(jpql).setParameter(1, 15).getResultList();
         System.out.println("resultList>>" + resultList.size());
         System.out.println("resultList>>" + resultList);
     }
@@ -104,11 +104,11 @@ public class TestOrderAndStudent {
 
     @Test
     public void getJPQLSetHint() {
-        String JPQL = "FROM Order O WHERE O.id>?";
+        String JPQL = "FROM Order O WHERE O.id>?1";
         //
         Query createQuery = createEntityManager.createQuery(JPQL).setHint(QueryHints.HINT_CACHEABLE, true);
         //参数1 :?的序号 参数2：标示的？的值
-        createQuery.setParameter(1, 40);
+        createQuery.setParameter(1, 15);
         List resultList = createQuery.getResultList();
         System.out.println(">>" + resultList.size());
 
@@ -116,7 +116,7 @@ public class TestOrderAndStudent {
         //
         createQuery = createEntityManager.createQuery(JPQL).setHint(QueryHints.HINT_CACHEABLE, true);
         //参数1 :?的序号 参数2：标示的？的值
-        createQuery.setParameter(1, 40);
+        createQuery.setParameter(1, 15);
         resultList = createQuery.getResultList();
         System.out.println(">" + resultList.size());
     }
@@ -124,25 +124,25 @@ public class TestOrderAndStudent {
 
     @Test
     public void getNativeQuery() {
-        String sql = "SELECT P.lsat_name FROM JPA_PERSON P WHERE P.id=?";
-        Object singleResult = createEntityManager.createNativeQuery(sql).setParameter(1, 5).getSingleResult();
+        String sql = "SELECT P.lastName FROM JPA_PERSON P WHERE P.id=?";
+        Object singleResult = createEntityManager.createNativeQuery(sql).setParameter(1, 1L).getSingleResult();
         System.out.println("singleResult>>" + singleResult);
     }
 
 
     @Test
     public void getNamedQuery() {
-        List resultList = createEntityManager.createNamedQuery("nameQuery").setParameter(1, 6).getResultList();
+        List resultList = createEntityManager.createNamedQuery("Person.findPersonById").setParameter(1, 1L).getResultList();
         System.out.println("resultList>>" + resultList);
     }
 
 
     @Test
     public void getJPQL2() {
-        String jpql = "SELECT new Person(P.id,P.name) FROM Person P where P.id=?";
+        String jpql = "SELECT new Person(P.id,P.firstName) FROM Person P where P.id=?1";
         Query createQuery = createEntityManager.createQuery(jpql);
         //参数1 :?的序号 参数2：标示的？的值
-        createQuery.setParameter(1, 2);
+        createQuery.setParameter(1, 1L);
         List resultList = createQuery.getResultList();
         System.out.println(resultList.size());
         System.out.println(resultList);
@@ -152,7 +152,7 @@ public class TestOrderAndStudent {
 
     @Test
     public void getJPQL1() {
-        String JPQL = "SELECT O.id ,O.name FROM Order O WHERE O.id=?";
+        String JPQL = "SELECT O.id ,O.name FROM Order O WHERE O.id=?1";
         //
         Query createQuery = createEntityManager.createQuery(JPQL);
         //参数1 :?的序号 参数2：标示的？的值
@@ -165,11 +165,11 @@ public class TestOrderAndStudent {
 
     @Test
     public void getJPQL() {
-        String JPQL = "FROM Order O WHERE O.id>?";
+        String JPQL = "FROM Order O WHERE O.id>?1";
         //
         Query createQuery = createEntityManager.createQuery(JPQL);
         //参数1 :?的序号 参数2：标示的？的值
-        createQuery.setParameter(1, 40);
+        createQuery.setParameter(1, 15);
         List resultList = createQuery.getResultList();
         System.out.println(resultList.size());
     }
@@ -179,14 +179,14 @@ public class TestOrderAndStudent {
     @Test
     public void getSession() {
 
-        Person find = createEntityManager.find(Person.class, 1);
+        Person find = createEntityManager.find(Person.class, 1L);
         transaction.commit();
         createEntityManager.close();
 
         createEntityManager = createEntityManagerFactory.createEntityManager();
         transaction = createEntityManager.getTransaction();
         transaction.begin();
-        Person find1 = createEntityManager.find(Person.class, 1);
+        Person find1 = createEntityManager.find(Person.class, 1L);
         System.out.println("find>>" + find);
         System.out.println("find1>>" + find1);
 
