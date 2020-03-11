@@ -29,7 +29,7 @@ public class Student {
 	private  String mail;
 
 	
-//	public  List<Order> order=new  ArrayList<>();
+	public  List<Order> order=new  ArrayList<>();
 	
 	
 	@GeneratedValue
@@ -40,18 +40,19 @@ public class Student {
     
 	
 	/**
-	 * 关联关系是1-N使用注解@OneToMany ,映射关联外键的名称@JoinColumn(name="order_id")
+	 * 关联关系是1-N使用注解@OneToMany
+	 * 映射关联外键的名称@JoinColumn(name="order_id")
 	 * 
 	 * */
 //	@JoinColumn(name="student_id")
-//	@OneToMany(mappedBy="student")
-//	public List<Order> getOrder() {
-//		return order;
-//	}
-//
-//	public void setOrder(List<Order> order) {
-//		this.order = order;
-//	}
+	@OneToMany(mappedBy = "student")
+	public List<Order> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<Order> order) {
+		this.order = order;
+	}
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -83,11 +84,20 @@ public class Student {
 		this.mail = mail;
 	}
 
+//	@Override
+//	public String toString() {
+//		return "Student [id=" + id + ", name=" + name + ", birth=" + birth + ", mail=" + mail + "]";
+//	}
+
+
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", birth=" + birth + ", mail=" + mail + "]";
+		return "Student{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				", birth=" + birth +
+				", mail='" + mail + '\'' +
+				", order=" + order +
+				'}';
 	}
-	
-	
-	
 }

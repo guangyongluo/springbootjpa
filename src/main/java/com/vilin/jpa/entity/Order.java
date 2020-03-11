@@ -22,8 +22,8 @@ public class Order {
     }
 
     /**
-     * N-1@ManyToOne
-     * 映射外键字段名@JoinColumn()
+     * N-1 : @ManyToOne
+     * 映射外键字段名 : @JoinColumn()
      */
     @JoinColumn(name = "student_id")
     @ManyToOne
@@ -51,11 +51,13 @@ public class Order {
     public String toString() {
         return "Order [id=" + id + ", name=" + name + ", student=" + student + "]";
     }
-	
-/*	@Override
-	public String toString() {
-		return "Order [id=" + id + ", name=" + name + "]";
-	}*/
 
 
+//    @Override
+//    public String toString() {
+//        return "Order{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                '}';
+//    }
 }

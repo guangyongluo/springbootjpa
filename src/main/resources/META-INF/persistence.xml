@@ -9,12 +9,12 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <!--  添加持久类-->
         <class>com.vilin.jpa.entity.Employee</class>
-        <!--	<class>com.jpa.jpa.entity.Student</class>-->
-        <!--	<class>com.jpa.jpa.entity.Order</class>-->
-        <!--	<class>com.jpa.jpa.entity.Dep</class>-->
-        <!--	<class>com.jpa.jpa.entity.Manager</class>-->
-        <!--	<class>com.jpa.jpa.entity.Items</class>-->
-        <!--	<class>com.jpa.jpa.entity.Categorys</class>-->
+        <class>com.vilin.jpa.entity.Student</class>
+        <class>com.vilin.jpa.entity.Order</class>
+        <class>com.vilin.jpa.entity.Dep</class>
+        <class>com.vilin.jpa.entity.Manager</class>
+        <class>com.vilin.jpa.entity.Items</class>
+        <class>com.vilin.jpa.entity.Categories</class>
         <!-- 配置二级缓存的生成策略
         ALL:所有实体类都被缓存
         NONE  :所有实体类都不用缓存
@@ -41,12 +41,12 @@
             <!-- 开起二级缓存 -->
             <!--配置二级缓存  -->
             <!-- 开启二级缓存 -->
-<!--            <property name="hibernate.cache.use_second_level_cache" value="true"/>-->
+            <!--            <property name="hibernate.cache.use_second_level_cache" value="true"/>-->
             <!--    二级缓存相关的配置 -->
-<!--            <property name="hibernate.cache.region.factory_class"-->
-<!--                      value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>-->
+            <!--            <property name="hibernate.cache.region.factory_class"-->
+            <!--                      value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>-->
             <!--   查询缓存开启 -->
-<!--            <property name="hibernate.cache.use_query_cache" value="true"/>-->
+            <!--            <property name="hibernate.cache.use_query_cache" value="true"/>-->
 
         </properties>
 
