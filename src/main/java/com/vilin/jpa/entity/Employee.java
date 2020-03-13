@@ -29,9 +29,9 @@ public class Employee {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "ID_GENERATOR")
-    @TableGenerator(name = "ID_GENERATOR", table = "jpa_tables_id", pkColumnName = "jpa_id_name", pkColumnValue = "JPA_EMPLOYEE_ID", valueColumnName = "jpa_id_value", allocationSize = 1)
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.TABLE, generator = "ID_GENERATOR")
+//    @TableGenerator(name = "ID_GENERATOR", table = "jpa_tables_id", pkColumnName = "jpa_id_name", pkColumnValue = "JPA_EMPLOYEE_ID", valueColumnName = "jpa_id_value", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
